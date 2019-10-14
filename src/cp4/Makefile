@@ -2,7 +2,7 @@ CC:= /usr/bin/gcc
 AR:= /usr/bin/ar
 MAKE:= /usr/bin/make
 
-CPPFLAGS:= -I ../include/
+CPPFLAGS:= -I ../include/ -ansi -Wall -DLINUX -D_GNU_SOURCE
 
 LIBCP4:= ../lib/libcp4.a
 #PROGS := seek hole mycat fileflags setfl
@@ -11,7 +11,7 @@ PROGS:= $(basename $(SRCS))
 
 all: $(PROGS)
 
-$(LIBCP4): ../lib/error.c ../include/apue.h 
+$(LIBCP4): ../lib/error.c ../lib/pathalloc.c ../include/apue.h 
 	$(MAKE) -C ../lib/ libcp4.a
 
 %: %.o $(LIBCP4)

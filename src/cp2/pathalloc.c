@@ -55,7 +55,7 @@ path_alloc(size_t *sizep) /* also return allocated size, if nonnull */
 	return(ptr);
 }
 
-void
+int
 main(void)
 {
 	size_t path_size;
@@ -63,7 +63,9 @@ main(void)
 
 	path_ptr = path_alloc(&path_size);
 	if(path_ptr){
-		printf("ptr: %p, size: %d\n", path_ptr, path_size);
+		printf("ptr: %p, size: %d\n", path_ptr, (int)path_size);
 		free(path_ptr);
 	}
+	
+	return 0;
 }

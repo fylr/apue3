@@ -1,19 +1,14 @@
 CC:= /usr/bin/gcc
 AR:= /usr/bin/ar
-CPPFLAGS:= -I ../include/
+
+CPPFLAGS:= -I ../include/ -ansi -Wall -DLINUX -D_GNU_SOURCE
 
 SRCS:= $(shell ls *.c)
 LIBS:= liberror.a liberror-pathalloc.a
 
 all: $(LIBS)
 
-libcp1.a: liberror.a
-	ln -sf $< $@
-
-libcp2.a: liberror.a
-	ln -sf $< $@
-
-libcp3.a: liberror.a
+libcp1.a libcp2.a libcp3.a libcp5.a: liberror.a
 	ln -sf $< $@
 
 libcp4.a: liberror-pathalloc.a
@@ -50,5 +45,8 @@ cp3-clean:
 
 cp4-clean:
 	rm -rf libcp4.a error.o error.d pathalloc.o pathalloc.d
+
+cp5-clean:
+	rm -rf libcp5.a error.o error.d
 
 .PHONY: all clean

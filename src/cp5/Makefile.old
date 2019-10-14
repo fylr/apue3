@@ -1,0 +1,15 @@
+CC := /usr/bin/gcc
+CPPFLAGS := -I ../include/
+PROGS := getcputc fgetsfputs buf tempfiles mkstemp memstr
+
+all: $(PROGS)
+
+$(PROGS): 
+
+%.o: %.c ../include/ ../lib/error.c
+	$(CC) $(CPPFLAGS) ../lib/error.c $< -o $@
+
+clean:
+	rm -rf $(PROGS)
+
+.PHONY: all clean 

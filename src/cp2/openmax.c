@@ -28,8 +28,9 @@ open_max(void)
 	return(openmax);
 }
 
-void
+int
 main(void)
 {
-	printf("%ld\n", open_max);
+	printf("%ld\n", (long)open_max);
+	return 0;
 }
