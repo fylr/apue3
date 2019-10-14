@@ -3,17 +3,26 @@ AR:= /usr/bin/ar
 CPPFLAGS:= -I ../include/
 
 SRCS:= $(shell ls *.c)
-LIBS:= liberr.a
+LIBS:= liberror.a liberror-pathalloc.a
 
 all: $(LIBS)
 
-libcp1.a: liberr.a
+libcp1.a: liberror.a
 	ln -sf $< $@
 
-libcp2.a: liberr.a
+libcp2.a: liberror.a
 	ln -sf $< $@
 
-liberr.a: error.o
+libcp3.a: liberror.a
+	ln -sf $< $@
+
+libcp4.a: liberror-pathalloc.a
+	ln -sf $< $@
+
+liberror.a: error.o
+	$(AR) -rsv $@ $?
+
+liberror-pathalloc.a: error.o pathalloc.o
 	$(AR) -rsv $@ $?
 
 %.o: %.c
@@ -36,4 +45,10 @@ cp1-clean:
 cp2-clean:
 	rm -rf libcp2.a error.o error.d
 
-.PHONY: all clean cp1 cp1-clean
+cp3-clean:
+	rm -rf libcp3.a error.o error.d
+
+cp4-clean:
+	rm -rf libcp4.a error.o error.d pathalloc.o pathalloc.d
+
+.PHONY: all clean

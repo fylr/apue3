@@ -4,18 +4,18 @@ MAKE:= /usr/bin/make
 
 CPPFLAGS:= -I ../include/
 
-LIBCP3:= ../lib/libcp3.a
+LIBCP4:= ../lib/libcp4.a
 #PROGS := seek hole mycat fileflags setfl
 SRCS:= $(shell ls *.c)
 PROGS:= $(basename $(SRCS))
 
 all: $(PROGS)
 
-$(LIBCP3): ../lib/error.c ../include/apue.h 
-	$(MAKE) -C ../lib/ libcp3.a
+$(LIBCP4): ../lib/error.c ../include/apue.h 
+	$(MAKE) -C ../lib/ libcp4.a
 
-%: %.o $(LIBCP3)
-	$(CC) $(CPPFLAGS) -o $@ $< $(LIBCP3)
+%: %.o $(LIBCP4)
+	$(CC) $(CPPFLAGS) -o $@ $< $(LIBCP4)
 
 %.o: %.c
 	$(CC) -c $(CPPFLAGS) -o $@ $<
@@ -30,6 +30,6 @@ $(LIBCP3): ../lib/error.c ../include/apue.h
 
 clean:
 	rm -rf $(PROGS) *.o *.d
-	$(MAKE) -C ../lib/ cp3-clean
+	$(MAKE) -C ../lib/ cp4-clean
 
 .PHONY: all clean
