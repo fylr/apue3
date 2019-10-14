@@ -5,7 +5,9 @@ MAKE:= /usr/bin/make
 CPPFLAGS:= -I ../include/
 
 LIBCP1:= ../lib/libcp1.a
-PROGS:= ls1 mycat getcputc hello shell1 testerror uidgid shell2
+#PROGS:= ls1 mycat getcputc hello shell1 testerror uidgid shell2
+SRCS:= $(shell ls *.c)
+PROGS:= $(basename $(SRCS))
 
 all: $(PROGS)
 

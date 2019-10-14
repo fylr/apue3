@@ -5,7 +5,9 @@ MAKE:= /usr/bin/make
 CPPFLAGS:= -I ../include/
 
 LIBCP2:= ../lib/libcp2.a
-PROGS:= conf pathalloc openmax
+#PROGS:= conf pathalloc openmax
+SRCS:= $(shell ls *.c) conf.c
+PROGS:= $(basename $(SRCS))
 
 all: $(PROGS)
 
