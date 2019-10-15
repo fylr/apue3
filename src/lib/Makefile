@@ -8,7 +8,7 @@ LIBS:= liberror.a liberror-pathalloc.a
 
 all: $(LIBS)
 
-libcp1.a libcp2.a libcp3.a libcp5.a: liberror.a
+libcp1.a libcp2.a libcp3.a libcp5.a libcp6.a: liberror.a
 	ln -sf $< $@
 
 libcp4.a: liberror-pathalloc.a
@@ -48,5 +48,8 @@ cp4-clean:
 
 cp5-clean:
 	rm -rf libcp5.a error.o error.d
+
+cp6-clean:
+	rm -rf libcp6.a error.o error.d
 
 .PHONY: all clean
