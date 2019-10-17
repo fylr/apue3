@@ -4,20 +4,26 @@ AR:= /usr/bin/ar
 CPPFLAGS:= -I ../include/ -ansi -Wall -DLINUX -D_GNU_SOURCE
 
 SRCS:= $(shell ls *.c)
-LIBS:= liberror.a liberror-pathalloc.a
+LIBS:= liberror.a liberpa.a liberrpetwst.a
 
 all: $(LIBS)
 
-libcp1.a libcp2.a libcp3.a libcp5.a libcp6.a libcp7.a: liberror.a
+libcp1.a libcp2.a libcp3.a libcp5.a libcp6.a libcp7.a libcp8.a: liberror.a
 	ln -sf $< $@
 
-libcp4.a: liberror-pathalloc.a
+libcp4.a: liberpa.a
+	ln -sf $< $@
+
+libcp8.a: liberrpetwst.a
 	ln -sf $< $@
 
 liberror.a: error.o
 	$(AR) -rsv $@ $?
 
-liberror-pathalloc.a: error.o pathalloc.o
+liberpa.a: error.o pathalloc.o
+	$(AR) -rsv $@ $?
+
+liberrpetwst.a: error.o prexit.o tellwait.o system.o
 	$(AR) -rsv $@ $?
 
 %.o: %.c
@@ -54,5 +60,8 @@ cp6-clean:
 
 cp7-clean:
 	rm -rf libcp7.a error.o error.d
+
+cp8-clean:
+	rm -rf libcp8.a error.o error.d prexit.o prexit.d tellwait.o tellwait.d system.o system.d
 
 .PHONY: all clean
