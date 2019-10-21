@@ -8,7 +8,7 @@ LIBS:= liberror.a liberpa.a liberrpetwst.a
 
 all: $(LIBS)
 
-libcp1.a libcp2.a libcp3.a libcp5.a libcp6.a libcp7.a libcp8.a: liberror.a
+libcp1.a libcp2.a libcp3.a libcp5.a libcp6.a libcp7.a libcp8.a libcp9.a: liberror.a
 	ln -sf $< $@
 
 libcp4.a: liberpa.a
@@ -63,5 +63,8 @@ cp7-clean:
 
 cp8-clean:
 	rm -rf libcp8.a error.o error.d prexit.o prexit.d tellwait.o tellwait.d system.o system.d
+
+cp9-clean:
+	rm -rf libcp9.a error.o error.d
 
 .PHONY: all clean
