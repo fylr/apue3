@@ -4,7 +4,7 @@ AR:= /usr/bin/ar
 CPPFLAGS:= -I ../include/ -ansi -Wall -DLINUX -D_GNU_SOURCE
 
 SRCS:= $(shell ls *.c)
-LIBS:= liberror.a liberpa.a liberrpetwst.a
+LIBS:= liberror.a liberpa.a liberrpetwst.a libersnpm.a
 
 all: $(LIBS)
 
@@ -17,6 +17,9 @@ libcp4.a: liberpa.a
 libcp8.a: liberrpetwst.a
 	ln -sf $< $@
 
+libcp10.a: libersnpm.a
+	ln -sf $< $@
+
 liberror.a: error.o
 	$(AR) -rsv $@ $?
 
@@ -24,6 +27,9 @@ liberpa.a: error.o pathalloc.o
 	$(AR) -rsv $@ $?
 
 liberrpetwst.a: error.o prexit.o tellwait.o system.o
+	$(AR) -rsv $@ $?
+
+libersnpm.a: error.o signal.o prmask.o
 	$(AR) -rsv $@ $?
 
 %.o: %.c
@@ -66,5 +72,8 @@ cp8-clean:
 
 cp9-clean:
 	rm -rf libcp9.a error.o error.d
+
+cp10-clean:
+	rm -rf libcp10.a error.o error.d signal.o signal.d prmask.o prmask.d
 
 .PHONY: all clean
