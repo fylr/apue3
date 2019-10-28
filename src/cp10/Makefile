@@ -5,9 +5,9 @@ MAKE:= /usr/bin/make
 CPPFLAGS:= -I ../include/ -ansi -Wall -DLINUX -D_GNU_SOURCE
 
 LIBCP10:= ../lib/libcp10.a
-#SRCS:= $(shell ls *.c)
-#PROGS:= $(basename $(SRCS))
-PROGS:= sigusr reenter child sleep1 sleep2 tsleep2 read1 read2 setops critical mask suspend1 suspend2 abort systest2 system sigtstp
+SRCS:= $(shell ls *.c)
+PROGS:= $(basename $(SRCS))
+#PROGS:= sigusr reenter child sleep1 sleep2 tsleep2 read1 read2 setops critical mask suspend1 suspend2 abort systest2 system sigtstp
 
 all: $(PROGS)
 
