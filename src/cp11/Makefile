@@ -2,7 +2,7 @@ CC:= /usr/bin/gcc
 AR:= /usr/bin/ar
 MAKE:= /usr/bin/make
 
-CPPFLAGS:= -I ../include/ -ansi -Wall -DLINUX -D_GNU_SOURCE
+CPPFLAGS:= -I ../include/ -Wall -DLINUX -D_GNU_SOURCE
 LDFLAGS:= -lpthread
 
 LIBCP11:= ../lib/libcp11.a

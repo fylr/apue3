@@ -1,14 +1,14 @@
 CC:= /usr/bin/gcc
 AR:= /usr/bin/ar
 
-CPPFLAGS:= -I ../include/ -ansi -Wall -DLINUX -D_GNU_SOURCE
+CPPFLAGS:= -I ../include/ -Wall -DLINUX -D_GNU_SOURCE
 
 SRCS:= $(shell ls *.c)
 LIBS:= liberror.a liberpa.a liberrpetwst.a libersnpm.a
 
 all: $(LIBS)
 
-libcp1.a libcp2.a libcp3.a libcp5.a libcp6.a libcp7.a libcp8.a libcp9.a libcp11.a: liberror.a
+libcp1.a libcp2.a libcp3.a libcp5.a libcp6.a libcp7.a libcp8.a libcp9.a libcp11.a libcp12.a: liberror.a
 	ln -sf $< $@
 
 libcp4.a: liberpa.a
@@ -78,5 +78,8 @@ cp10-clean:
 
 cp11-clean:
 	rm -rf libcp11.a error.o error.d
+
+cp12-clean:
+	rm -rf libcp12.a error.o error.d
 
 .PHONY: all clean

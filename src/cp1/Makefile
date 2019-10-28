@@ -2,7 +2,7 @@ CC:= /usr/bin/gcc
 AR:= /usr/bin/ar
 MAKE:= /usr/bin/make
 
-CPPFLAGS:= -I ../include/ -ansi -Wall -DLINUX -D_GNU_SOURCE
+CPPFLAGS:= -I ../include/ -Wall -DLINUX -D_GNU_SOURCE
 
 LIBCP1:= ../lib/libcp1.a
 #PROGS:= ls1 mycat getcputc hello shell1 testerror uidgid shell2

@@ -2,7 +2,7 @@ CC:= /usr/bin/gcc
 AR:= /usr/bin/ar
 MAKE:= /usr/bin/make
 
-CPPFLAGS:= -I ../include/ -ansi -Wall -DLINUX -D_GNU_SOURCE
+CPPFLAGS:= -I ../include/ -Wall -DLINUX -D_GNU_SOURCE
 
 LIBCP4:= ../lib/libcp4.a
 #PROGS := seek hole mycat fileflags setfl
