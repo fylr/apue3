@@ -3,7 +3,7 @@ AR:= /usr/bin/ar
 MAKE:= /usr/bin/make
 
 CPPFLAGS:= -I ../include/ -Wall -DLINUX -D_GNU_SOURCE
-LDFLAGS:= -lpthread
+LDFLAGS:= -pthread
 
 LIBCP11:= ../lib/libcp11.a
 SRCS:= $(shell ls *.c)
