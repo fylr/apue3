@@ -4,7 +4,7 @@ AR:= /usr/bin/ar
 CPPFLAGS:= -I ../include/ -Wall -DLINUX -D_GNU_SOURCE
 
 SRCS:= $(shell ls *.c)
-LIBS:= liberror.a liberpa.a liberrpetwst.a libersnpm.a liberlf.a libersfcflrtw.a libertw.a
+LIBS:= liberror.a liberpa.a liberrpetwst.a libersnpm.a liberlf.a libersfcflrtw.a libertw.a libercc2is2itsd.a
 
 all: $(LIBS)
 
@@ -29,6 +29,9 @@ libcp14.a: libersfcflrtw.a
 libcp15.a: libertw.a
 	ln -sf $< $@
 
+libcp16.a: libercc2is2itsd.a
+	ln -sf $< $@
+
 liberror.a: error.o
 	$(AR) -rsv $@ $?
 
@@ -48,6 +51,9 @@ libersfcflrtw.a: error.o lockfile.o setfl.o clrfl.o lockreg.o tellwait.o
 	$(AR) -rsv $@ $?
 
 libertw.a: error.o tellwait.o
+	$(AR) -rsv $@ $?
+
+libercc2is2itsd.a: error.o clconn2.o initsrv2.o init.o setfd.o
 	$(AR) -rsv $@ $?
 
 %.o: %.c
@@ -108,5 +114,8 @@ cp14-clean:
 
 cp15-clean:
 	rm -rf libcp14.a error.o error.d tellwait.o tellwait.d
+
+cp16-clean:
+	rm -rf libcp14.a error.o error.d clconn2.o clconn2.d initsrv2.o initsrv2.d init.o init.d setfd.o setfd.d
 
 .PHONY: all clean

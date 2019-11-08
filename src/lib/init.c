@@ -76,10 +76,3 @@ daemonize(const char *cmd)
 		exit(1);
 	}
 }
-
-int
-main(void)
-{
-	daemonize("test daemon");
-	return 0;
-}
