@@ -4,7 +4,7 @@ AR:= /usr/bin/ar
 CPPFLAGS:= -I ../include/ -Wall -DLINUX -D_GNU_SOURCE
 
 SRCS:= $(shell ls *.c)
-LIBS:= liberror.a liberpa.a liberrpetwst.a libersnpm.a liberlf.a libersfcflrtw.a libertw.a libercc2is2itsd.a
+LIBS:= liberror.a liberpa.a liberrpetwst.a libersnpm.a liberlf.a libersfcflrtw.a libertw.a libercc2is2itsd.a libersprfsesfwnbacceldss.a
 
 all: $(LIBS)
 
@@ -32,6 +32,9 @@ libcp15.a: libertw.a
 libcp16.a: libercc2is2itsd.a
 	ln -sf $< $@
 
+libcp17.a: libersprfsesfwnbacceldss.a
+	ln -sf $< $@
+
 liberror.a: error.o
 	$(AR) -rsv $@ $?
 
@@ -54,6 +57,10 @@ libertw.a: error.o tellwait.o
 	$(AR) -rsv $@ $?
 
 libercc2is2itsd.a: error.o clconn2.o initsrv2.o init.o setfd.o
+	$(AR) -rsv $@ $?
+
+libersprfsesfwnbacceldss.a: error.o spipe.o recvfd.o senderr.o sendfd.o writen.o bufargs.o cliconn.o \
+ errorlog.o daemonize.o servaccept.o servlisten.o
 	$(AR) -rsv $@ $?
 
 %.o: %.c
@@ -113,9 +120,14 @@ cp14-clean:
 	rm -rf libcp14.a error.o error.d setfl.o setfl.d clrfl.o clrfl.d lockreg.o lockreg.d tellwait.o tellwait.d
 
 cp15-clean:
-	rm -rf libcp14.a error.o error.d tellwait.o tellwait.d
+	rm -rf libcp15.a error.o error.d tellwait.o tellwait.d
 
 cp16-clean:
-	rm -rf libcp14.a error.o error.d clconn2.o clconn2.d initsrv2.o initsrv2.d init.o init.d setfd.o setfd.d
+	rm -rf libcp16.a error.o error.d clconn2.o clconn2.d initsrv2.o initsrv2.d init.o init.d setfd.o setfd.d
+
+cp17-clean:
+	rm -rf libcp17.a error.o error.d spipe.o spipe.d recvfd.o recvfd.d senderr.o senderr.d sendfd.o sendfd.d \
+	 writen.o writen.d bufargs.o bufargs.d cliconn.o cliconn.d errorlog.o errorlog.d daemonize.o daemonize.d \
+	 servaccept.o servaccept.d servlisten.o servlisten.d
 
 .PHONY: all clean
