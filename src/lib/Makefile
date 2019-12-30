@@ -4,7 +4,8 @@ AR:= /usr/bin/ar
 CPPFLAGS:= -I ../include/ -Wall -DLINUX -D_GNU_SOURCE
 
 SRCS:= $(shell ls *.c)
-LIBS:= liberror.a liberpa.a liberrpetwst.a libersnpm.a liberlf.a libersfcflrtw.a libertw.a libercc2is2itsd.a libersprfsesfwnbacceldss.a liberittncitm.a
+LIBS:= liberror.a liberpa.a liberrpetwst.a libersnpm.a liberlf.a libersfcflrtw.a libertw.a libercc2is2itsd.a \
+ libersprfsesfwnbacceldss.a liberittncitm.a liberpopflpdvtmsiwnsp.a
 
 all: $(LIBS)
 
@@ -38,6 +39,9 @@ libcp17.a: libersprfsesfwnbacceldss.a
 libcp18.a: liberittncitm.a
 	ln -sf $< $@
 
+libcp19.a: liberpopflpdvtmsiwnsp.a
+	ln -sf $< $@
+
 liberror.a: error.o
 	$(AR) -rsv $@ $?
 
@@ -67,6 +71,9 @@ libersprfsesfwnbacceldss.a: error.o spipe.o recvfd.o senderr.o sendfd.o writen.o
 	$(AR) -rsv $@ $?
 
 liberittncitm.a: error.o isatty.o ttyname.o ctermid.o getpass.o ttymodes.o
+	$(AR) -rsv $@ $?
+
+liberpopflpdvtmsiwnsp.a: error.o ptyopen.o ptyfork.o loop.o driver.o ttymodes.o signalintr.o writen.o spipe.o
 	$(AR) -rsv $@ $?
 
 %.o: %.c
@@ -139,5 +146,9 @@ cp17-clean:
 cp18-clean:
 	rm -rf libcp18.a error.o error.d isatty.o isatty.d ttyname.o ttyname.d ctermid.o ctermid.d \
 	 getpass.o getpass.d ttymodes.o ttymodes.d
+
+cp19-clean:
+	rm -rf libcp19.a error.o error.d ptyopen.o ptyopen.d ptyfork.o ptyfork.d loop.o loop.d driver.o driver.d \
+	 ttymodes.o ttymodes.d signalintr.o signalintr.d writen.o writen.d spipe.o spipe.d
 
 .PHONY: all clean
