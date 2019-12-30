@@ -4,7 +4,7 @@ AR:= /usr/bin/ar
 CPPFLAGS:= -I ../include/ -Wall -DLINUX -D_GNU_SOURCE
 
 SRCS:= $(shell ls *.c)
-LIBS:= liberror.a liberpa.a liberrpetwst.a libersnpm.a liberlf.a libersfcflrtw.a libertw.a libercc2is2itsd.a libersprfsesfwnbacceldss.a
+LIBS:= liberror.a liberpa.a liberrpetwst.a libersnpm.a liberlf.a libersfcflrtw.a libertw.a libercc2is2itsd.a libersprfsesfwnbacceldss.a liberittncitm.a
 
 all: $(LIBS)
 
@@ -35,6 +35,9 @@ libcp16.a: libercc2is2itsd.a
 libcp17.a: libersprfsesfwnbacceldss.a
 	ln -sf $< $@
 
+libcp18.a: liberittncitm.a
+	ln -sf $< $@
+
 liberror.a: error.o
 	$(AR) -rsv $@ $?
 
@@ -61,6 +64,9 @@ libercc2is2itsd.a: error.o clconn2.o initsrv2.o init.o setfd.o
 
 libersprfsesfwnbacceldss.a: error.o spipe.o recvfd.o senderr.o sendfd.o writen.o bufargs.o cliconn.o \
  errorlog.o daemonize.o servaccept.o servlisten.o
+	$(AR) -rsv $@ $?
+
+liberittncitm.a: error.o isatty.o ttyname.o ctermid.o getpass.o ttymodes.o
 	$(AR) -rsv $@ $?
 
 %.o: %.c
@@ -129,5 +135,9 @@ cp17-clean:
 	rm -rf libcp17.a error.o error.d spipe.o spipe.d recvfd.o recvfd.d senderr.o senderr.d sendfd.o sendfd.d \
 	 writen.o writen.d bufargs.o bufargs.d cliconn.o cliconn.d errorlog.o errorlog.d daemonize.o daemonize.d \
 	 servaccept.o servaccept.d servlisten.o servlisten.d
+
+cp18-clean:
+	rm -rf libcp18.a error.o error.d isatty.o isatty.d ttyname.o ttyname.d ctermid.o ctermid.d \
+	 getpass.o getpass.d ttymodes.o ttymodes.d
 
 .PHONY: all clean
